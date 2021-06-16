@@ -1,0 +1,30 @@
+
+
+def sum(a,b):
+    if(b==0):
+        return a
+    else:
+        return sum(a^b,(a&b)<<1)
+        
+
+
+import math
+    
+def main():
+    
+    T=int(input())
+    
+    while(T>0):
+        
+        inp = list(map(int,input().split())) 
+        
+        a=inp[0]
+        b=inp[1]
+        
+        #ob=Solution()
+        print(sum(a,b))
+     
+        T-=1
+
+if __name__=="__main__":
+    main()
