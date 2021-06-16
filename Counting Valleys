@@ -1,0 +1,15 @@
+steps = int(input().strip())
+path = input()
+print(countingValleys(steps,path))
+
+def countingValleys(steps, path):
+    c=0
+    x=0
+    for i in range(steps):
+        if(path[i]=="U"):
+            c+=1
+            if(c==0):
+                x+=1
+        elif(path[i]=="D"):
+            c-=1
+    return x
