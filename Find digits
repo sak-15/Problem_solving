@@ -1,0 +1,29 @@
+import math
+import os
+import random
+import re
+import sys
+
+def findDigits(n):
+    res=0
+    temp=n
+    n=str(n)
+    for j in range(len(n)):
+        if(int(n[j])!=0):
+            if(temp%int(n[j])==0):
+                res+=1
+    return res
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        n = int(input().strip())
+
+        result = findDigits(n)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
