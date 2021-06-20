@@ -1,0 +1,30 @@
+import math
+import os
+import random
+import re
+import sys
+
+def plusMinus(arr):
+    a=0
+    b=0
+    c=0
+    for i in range(len(arr)):
+        if(arr[i]>0):
+            a+=1
+        elif(arr[i]<0):
+            b+=1
+        elif(arr[i]==0):
+            c+=1
+    a=a/len(arr)
+    b=b/len(arr)
+    c=c/len(arr)
+    print('%.6f'%a)
+    print('%.6f'%b)
+    print('%.6f'%c)
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    plusMinus(arr)
