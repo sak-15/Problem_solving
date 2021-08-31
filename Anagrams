@@ -1,0 +1,18 @@
+def isAnagram(self,a,b):
+        dic1={}
+        dic2={}
+        for i in a:
+            if ord(i)-97 in dic1.keys():
+                dic1[ord(i)-97]+=1
+            else:
+                dic1[ord(i)-97]=1
+        for j in b:
+            if ord(j)-97 in dic2.keys():
+                dic2[ord(j)-97]+=1
+            else:
+                dic2[ord(j)-97]=1
+        
+        if dic1==dic2:
+            return True
+        else:
+            return False
