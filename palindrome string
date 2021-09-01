@@ -1,0 +1,6 @@
+def isPlaindrome(S):
+        name=S[::-1]
+        if(name==S):
+            return 1
+        else:
+            return 0
