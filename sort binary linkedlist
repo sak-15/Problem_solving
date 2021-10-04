@@ -1,0 +1,18 @@
+class Solution:
+    
+    def solve(self, A):
+        temp=A
+        count_zero=0
+        while temp!=None:
+            if temp.val==0:
+                count_zero+=1
+            temp=temp.next
+        temp=A
+        while temp!=None:
+            if count_zero>0:
+                temp.val=0
+                count_zero-=1
+            else:
+                temp.val=1
+            temp=temp.next
+        return A
