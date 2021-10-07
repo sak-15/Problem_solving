@@ -1,0 +1,7 @@
+def getFirstSetBit(self,n):
+        num=bin(n)
+        num=list(num)
+        for i in range(len(num)-1,-1,-1):
+            if num[i]=='1':
+                return len(num)-i
+        return 0
