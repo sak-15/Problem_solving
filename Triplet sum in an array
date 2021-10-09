@@ -1,0 +1,13 @@
+#Function to find if there exists a triplet in the 
+    #array A[] which sums up to X.
+    # O(n3) solution [bruteforce]
+    def find3Numbers(self,A, n, X):
+        sum=[]
+        for i in range(n):
+            for j in range(i+1,n):
+                for k in range(j+1,n):
+                    if A[j]+A[k]+A[i]==X:
+                        sum.append([A[i],A[j],A[k]])
+        return len(sum)
+        
+        
