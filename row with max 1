@@ -1,0 +1,13 @@
+# TC- O(n+m)
+# SC-O(1)
+
+def rowWithMax1s(self,arr, n, m):
+		
+		count=0
+		result=-1
+		for i in range(n):
+		    temp=arr[i]
+		    if temp.count(1)>count:
+		        count=temp.count(1)
+		        result=i
+		return result
