@@ -1,0 +1,32 @@
+
+'''
+# Node Class:
+class Node:
+    def _init_(self,val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+
+#Function to return a list containing elements of left view of the binary tree.
+def LeftView(root):
+    
+    if root is None:
+        return []
+    queue=[root]
+    next_queue=[]
+    level=[]
+    result=[]
+    
+    while queue!=[]:
+        for root in queue:
+            level.append(root.data)
+            if root.left is not None:
+                next_queue.append(root.left)
+            if root.right is not None:
+                next_queue.append(root.right)
+        result.append(level[0])
+        level=[]
+        queue=next_queue
+        next_queue=[]
+    return result
