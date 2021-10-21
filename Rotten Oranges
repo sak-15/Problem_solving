@@ -1,0 +1,29 @@
+# TC-O(n2)
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        queue=[]
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j]==2:
+                    queue.append((i,j,0))
+        
+        total_time=0
+        while len(queue):
+            x,y,time=queue.pop(0)
+            total_time=max(time,total_time)
+            
+            for i,j in [[0,1],[1,0],[0,-1],[-1,0]]:
+                tempx,tempy=x+i,y+j
+                if tempx<0 or tempy<0 or tempx>=len(grid) or tempy>=len(grid[0]) or grid[tempx][tempy]!=1:
+                    continue
+                queue.append((tempx,tempy,time+1))
+                grid[tempx][tempy]=0
+        
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j]==1:
+                    return -1
+        return total_time
+            
+            
+        
