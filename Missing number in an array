@@ -1,0 +1,12 @@
+# TC-O(n)
+# SC-O(1)
+
+
+class Solution:
+    def MissingNumber(self,array,n):
+       
+        array_sum=sum(array) #sum of all the numbers in the array.
+        
+        total_sum=(n*(2+(n-1)))//2  #the sum of first n numbers using the arithmetic series sum formula
+        
+        return (total_sum-array_sum)
