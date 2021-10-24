@@ -1,0 +1,35 @@
+# iterative solution
+# TC-O(n^2)
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res=[[]]
+        for n in nums:
+            for i in range(len(res)):
+                res.append(res[i]+[n])
+        
+        return res
+
+
+# recursive soltuion (backtracking)
+# TC-O(2^n)
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        
+        res=[]
+        subset=[]
+        
+        def dfs(i):
+            if i>=len(nums): #base condition
+                res.append(subset.copy()) #deepcopy
+                return
+            
+            subset.append(nums[i]) #step to include the nums[i]
+            dfs(i+1)
+            
+            subset.pop() #step not to include the nums[i]
+            dfs(i+1)
+            
+        dfs(0)
+        return res
