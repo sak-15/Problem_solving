@@ -1,0 +1,31 @@
+# TC- O(n)
+# SC - O(n)
+
+def findSpiral(root):
+    # Code here
+    if root is None:
+        return []
+    queue=[root]
+    level=[]
+    next_queue=[]
+    res=[]
+    count=0
+    while len(queue):
+        for root in queue:
+            level.append(root.data)
+            if root.left is not None:
+                next_queue.append(root.left)
+            if root.right is not None:
+                next_queue.append(root.right)
+        count+=1
+        if count%2==0:
+            for i in level:
+                res.append(i)
+        else:
+            for i in level[::-1]:
+                res.append(i)
+        level=[]
+        queue=next_queue
+        next_queue=[]
+    
+    return res
