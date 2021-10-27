@@ -1,0 +1,22 @@
+# TC-O(nlogn)
+# SC- O(n)
+
+#User function Template for python3
+import heapq
+class Solution:
+    #Function to return the minimum cost of connecting the ropes.
+    def minCost(self,arr,n) :
+    
+        # code here
+        cost=0
+        prior_queue=[]
+        heapq.heapify(prior_queue)
+        for element in arr:
+            heapq.heappush(prior_queue,element)
+        
+        while len(prior_queue)>1:
+            temp1=heapq.heappop(prior_queue)
+            temp2=heapq.heappop(prior_queue)
+            cost+=temp1+temp2
+            heapq.heappush(prior_queue,temp1+temp2)
+        return cost
