@@ -1,0 +1,22 @@
+# TC-O(n)
+# SC- O(n*26)+ O(n)
+
+
+class Solution:
+	def FirstNonRepeating(self, A):
+		repeated=[]
+		counter=[0]*26
+		result=''
+		for i in A:
+		    counter[ord(i)-97]+=1
+		    if counter[ord(i)-97]==1:
+		        repeated.append(i)
+		    elif i in repeated:
+		        repeated.remove(i)
+		        
+		    if len(repeated)==0:
+		        result+='#'
+		    else:
+		        result+=repeated[0]
+		 
+		return result
