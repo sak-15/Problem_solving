@@ -1,0 +1,41 @@
+# TC- O(n)
+# SC- O(n)
+
+#User function Template for python3
+
+
+'''
+# Node Class:
+class Node:
+    def _init_(self,val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+class Solution:
+    #Function to get the maximum width of a binary tree.
+    def getMaxWidth(self,root):
+       
+        if root is None:
+            return 0
+        
+        queue=[root]
+        next_queue=[]
+        level=[]
+        result=0
+        while len(queue):
+            for root in queue:
+                level.append(root.data)
+                if root.left is not None:
+                    next_queue.append(root.left)
+                if root.right is not None:
+                    next_queue.append(root.right)
+            queue=next_queue
+            next_queue=[]
+            if len(level)>result:
+                result=len(level)
+            level=[]
+            
+        return result
+        
+        
