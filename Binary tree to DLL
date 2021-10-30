@@ -1,0 +1,38 @@
+# TC-O(n)
+# SC-O(1)
+
+
+'''
+class Node:
+    """ Class Node """
+    def __init__(self, value):
+        self.left = None
+        self.data = value
+        self.right = None
+'''
+
+#Function to convert a binary tree to doubly linked list.
+class Solution:
+    def bToDLL(self,root):
+        self.head=None
+        self.prev=None
+        
+        
+        def convert(root):
+            if root is None:
+                return
+            convert(root.left)
+            
+            if self.head==None:
+                self.head=root
+                self.prev=root
+            else:
+                self.prev.right=root
+                root.left=self.prev
+                self.prev=root
+            
+            convert(root.right)
+        convert(root)
+        return self.head
+        
+        
