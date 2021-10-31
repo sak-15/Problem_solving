@@ -1,0 +1,44 @@
+# TC- O(n)+O(n)
+# SC- O(n)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
+        self.result=[]
+        def traversal(root,target,dic):
+            if root is None:
+                return
+            if root.left is not None:
+                dic[root.left]=root
+                traversal(root.left,target,dic)
+            if root.right is not None:
+                dic[root.right]=root
+                traversal(root.right,target,dic)
+        def bfs(root,node,dic,k):
+            queue=[(node,0)]
+            visited=set()
+            visited.add(node)
+            while len(queue):
+                rem,time=queue.pop(0)
+                if time==k:
+                    self.result.append(rem.val)
+                if rem.left!=None and rem.left not in visited:
+                    visited.add(rem.left)
+                    queue.append((rem.left,time+1))
+                if rem.right!=None and rem.right not in visited:
+                    visited.add(rem.right)
+                    queue.append((rem.right,time+1))
+                if rem in dic.keys() and dic[rem] not in visited:
+                    visited.add(dic[rem])
+                    queue.append((dic[rem],time+1))
+            
+        dic=dict()
+        traversal(root,target,dic)
+        bfs(root,target,dic,k)
+        return self.result
