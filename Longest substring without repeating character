@@ -1,0 +1,53 @@
+# TC-O(n)
+# SC-O(n)
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        max_length = 0
+        left,dic=0,dict()
+        for i,c in enumerate(s):
+            if c in dic and left<=dic[c]:
+                left=dic[c]+1
+            else:
+                max_length=max(max_length,i-left+1)
+            dic[c]=i
+        return max_length
+
+
+# TC-O(2N)
+# SC-O(n)
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        substring=set()
+        res=0
+        l=0
+        
+        
+        for r in range(len(s)):
+            while s[r] in substring:
+                substring.remove(s[l])
+                l+=1
+            substring.add(s[r])
+            res=max(res,len(substring))
+        
+        return res
+
+
+# TC-O(n^2)
+# SC- O(n)
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        sub_string=[]
+        max=0
+        for i in range(len(s)):
+            for j in range(i,len(s)):
+                temp_str=s[i:j+1]
+                if len(set(temp_str))==len(temp_str):
+                    sub_string.append(temp_str)
+        
+        for i in sub_string:
+            if len(i)>max:
+                max=len(i)
+        
+        return max
+        
+        
