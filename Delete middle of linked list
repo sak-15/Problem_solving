@@ -1,0 +1,29 @@
+# TC- O(n/2)
+# SC-O(1)
+
+#User function Template for python3
+
+'''
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+'''
+def deleteMid(head):
+    '''
+    head:  head of given linkedList
+    return: head of resultant llist
+    '''
+    
+    #code here
+    slow=head
+    fast=head
+    prev=None
+    while fast and fast.next:
+        prev=slow
+        slow=slow.next
+        fast=fast.next.next
+    
+    prev.next=slow.next
+    
+    return head
