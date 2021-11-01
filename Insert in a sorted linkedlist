@@ -1,0 +1,28 @@
+# TC-O(n)
+# SC-O(1)
+
+
+class Solution:
+    def sortedInsert(self, head1,key):
+  
+        node=Node(key)
+        prev=head1
+        next1=head1.next
+        
+        if key<head1.data:
+            node.next=head1
+            return node
+        
+        while next1:
+            if prev.data<=key<=next1.data:
+                prev.next=node
+                node.next=next1
+                break
+            
+            prev=prev.next
+            next1=next1.next
+        
+        if prev.data<key:
+            prev.next=node
+        
+        return head1
