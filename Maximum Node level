@@ -1,0 +1,35 @@
+# TC-O(N)
+# SC-O(N)
+
+'''
+class Node:
+    def __init__(self,val):
+        self.data = val
+        self.left = None
+        self.right = None
+'''
+
+# Return the level (0-indexed) with maximum number of nodes.
+def maxNodeLevel(root):
+    # code here
+    queue=[root]
+    next_queue=[]
+    level=[]
+    result=[]
+    while len(queue):
+        for root in queue:
+            level.append(root.data)
+            if root.left!=None:
+                next_queue.append(root.left)
+            if root.right!=None:
+                next_queue.append(root.right)
+        result.append(level)
+        level=[]
+        queue=next_queue
+        next_queue=[]
+    output,maxl=0,0
+    for i in range(len(result)):
+        if len(result[i])>maxl:
+            maxl=len(result[i])
+            output=i
+    return output
