@@ -1,0 +1,33 @@
+# TC-O(n)
+# SC-O(n)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        def traversal(root,dic):
+            if root==None:
+                return
+            if root.left is not None:
+                dic[root.left]=root
+                traversal(root.left,dic)
+            if root.right is not None:
+                dic[root.right]=root
+                traversal(root.right,dic)
+        def find_common_ancestor(root,p,q,dic):
+            ancestors=set()
+            while p:
+                ancestors.add(p)
+                p=dic[p]
+            while q not in ancestors:
+                q=dic[q]
+            return q
+        dic=dict()
+        dic[root]=None
+        traversal(root,dic)
+        return find_common_ancestor(root,p,q,dic)
