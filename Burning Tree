@@ -1,0 +1,34 @@
+# TC-O(N)+O(N)
+# SC-O(N)
+
+class Solution:
+    def minTime(self, root,target):
+        self.node=0
+        def traversal(root,target,dic):
+            if root is None:
+                return 
+            if root.data==target:
+                self.node=root
+            if root.left is not None:
+                dic[root.left]=root
+                traversal(root.left,target,dic)
+            if root.right is not None:
+                dic[root.right]=root
+                traversal(root.right,target,dic)
+        def burning_tree(root,target,dic):
+            queue=[(target,0)]
+            visited=set()
+            while len(queue):
+                rem,time=queue.pop(0)
+                visited.add(rem)
+                if rem.left is not None and rem.left not in visited:
+                    queue.append((rem.left,time+1))
+                if rem.right is not None and rem.right not in visited:
+                    queue.append((rem.right,time+1))
+                if rem in dic.keys() and dic[rem] not in visited:
+                    queue.append((dic[rem],time+1))
+            return time
+        
+        dic=dict()
+        traversal(root,target,dic)
+        return burning_tree(root,self.node,dic)
