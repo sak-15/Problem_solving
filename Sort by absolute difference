@@ -1,0 +1,11 @@
+# TC-O(nlogn)
+# SC-O(1)
+
+#User function Template for python3
+
+class Solution:
+    
+    #Function to sort the array according to difference with given number.
+    def sortAbs(self,a, n, k):
+        a=sorted(a,key=lambda x:abs(x-k),reverse=False)
+        return a
