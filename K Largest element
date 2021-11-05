@@ -1,0 +1,16 @@
+# TC-O(n)
+# SC-O(n)
+
+#User function Template for python3
+import heapq
+class Solution:
+    #Function to return k largest elements from an array.
+    def kLargest(self,li,n,k):
+        pq=[]
+        res=[]
+        heapq.heapify(pq)
+        for i in li:
+            heapq.heappush(pq,-1*i)
+        for i in range(k):
+            res.append(-1*heapq.heappop(pq))
+        return res
