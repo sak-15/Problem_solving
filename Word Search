@@ -1,0 +1,33 @@
+# TC-O(m*n)
+# SC-O(1)
+
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        self.isTrueFalse=False
+        def word_find(board,word):
+            for i in range(len(board)):
+                for j in range(len(board[0])):
+                    if board[i][j]==word[0]:
+                        char=board[i][j]
+                        board[i][j]='0'
+                        dfs(board,i,j,word,1)
+                        board[i][j]=char
+                        if self.isTrueFalse==True:
+                            return True
+            return False
+           
+        def dfs(board,i,j,word,indx):
+            if indx==len(word):
+                self.isTrueFalse=True
+                return
+            for x,y in [[0,1],[1,0],[-1,0],[0,-1]]:
+                tempx=i+x
+                tempy=j+y
+                if tempx<0 or tempy<0 or tempx>=len(board) or tempy>=len(board[0]) or board[tempx][tempy]!=word[indx]:
+                    continue
+                character=board[tempx][tempy]
+                board[tempx][tempy]='0'
+                dfs(board,tempx,tempy,word,indx+1)
+                board[tempx][tempy]=character
+        
+        return word_find(board,word)
