@@ -1,0 +1,39 @@
+# TC-O(n*m)
+# SC-O(n)
+
+
+m = 5
+n = 5
+k = 2
+r = 1
+x = [1, 3]
+y = [3, 3]
+
+rec=[0]*m
+for i in range(m):
+    rec[i]=[0]*n
+
+def Traversal(rec,k,r,x,y):
+    for i in range(len(rec)):
+        for j in range(len(rec[0])):
+            if (i-(x[0]-1))**2+(j-(y[0]-1))**2<=r**2:
+                rec[i][j]=2
+            if (i-(x[1]-1))**2+(j-(y[1]-1))**2<=r**2:
+                rec[i][j]=2
+                
+def bfs(rec):
+    queue=[(0,0)]
+    while len(queue):
+        i,j=queue.pop(0)
+        if i==len(rec)-1 and j==len(rec[0])-1:
+            return 'possible'
+        rec[i][j]=1
+        for a,b in [[1,0],[0,1],[0,-1],[-1,0]]:
+            tempx=i+a
+            tempy=j+b
+            if tempx<0 or tempy<0 or tempx>=len(rec) or tempy>=len(rec[0]) or rec[tempx][tempy]!=0:
+                continue
+            queue.append((tempx,tempy))
+    return 'not possible'
+Traversal(rec,k,r,x,y)
+print(bfs(rec))
