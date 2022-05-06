@@ -1,0 +1,31 @@
+
+def DFS(graph, node, visited, color, c):
+    visited.add(node)
+    color[node] = c
+    for i in graph[node]:
+        if i not in visited:
+            temp = DFS(graph, i, visited, color, c^1)
+            if temp == False:
+                return False
+        else:
+            if color[i]==color[node]:
+                return False
+    return True
+
+ipt=[(1,2),(2,4),(4,3),(3,1),(2,5),(4,5)]
+nodes=5
+
+graph = dict()
+for i in range(1, nodes+1):
+    graph[i]=[]
+
+for (u,v) in ipt:
+    graph[u].append(v)
+    graph[v].append(u)
+
+visited = set()
+color = dict()
+
+
+temp = DFS(graph, 1, visited, color, 0)
+print(temp)
