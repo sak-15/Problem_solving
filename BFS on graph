@@ -1,0 +1,25 @@
+def BFS(graph, node, visited):
+    queue =[]
+    queue.append(node)
+    while len(queue):
+        n = queue.pop(0)
+        print(n)
+        visited.add(n)
+        for i in graph[n]:
+            if i not in visited:
+                queue.append(i)
+
+
+ipt=[(1,2),(4,2),(5,6),(3,4)]
+nodes=6
+
+graph=dict()
+for i in range(1,nodes+1):
+    graph[i]=[]
+for (u,v) in ipt:
+    graph[u].append(v)
+    graph[v].append(u)
+visited = set()
+for i in range(1,nodes+1):
+    if i not in visited:
+        BFS(graph, i, visited)
