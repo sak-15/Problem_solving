@@ -1,0 +1,32 @@
+
+def DFS(graph, node, visited, inTime, outTime):
+    visited.add(node)
+    global timer
+    inTime[node]=timer
+    timer+=1
+    for i in graph[node]:
+        if i not in visited:
+            DFS(graph, i, visited, inTime, outTime)
+    outTime[node]=timer
+    timer+=1
+
+ipt = [(1,2),(2,4),(2,5),(2,6),(1,3),(3,7),(1,8)]
+nodes = 8
+
+graph = dict()
+visited=set()
+timer=1
+inTime= dict()
+outTime = dict()
+
+for i in range(1,nodes+1):
+    graph[i]=[]
+    inTime[i]=0
+    outTime[i]=0
+for (u,v) in ipt:
+    graph[u].append(v)
+    graph[v].append(u)
+
+DFS(graph,1,visited, inTime, outTime)
+print(inTime)
+print(outTime)
