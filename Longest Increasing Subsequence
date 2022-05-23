@@ -1,0 +1,13 @@
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        output = [nums[0]]
+        
+        for n in nums:
+            temp = bisect_left(output, n)
+            if temp==len(output):
+                output.append(n)
+            else:
+                if output[temp]>n:
+                    output[temp]=n
+                    
+        return len(output)
