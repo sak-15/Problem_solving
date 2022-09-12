@@ -1,0 +1,16 @@
+// naive-approach 
+TC- c*r log(c*r)
+SC- c*r
+
+class Solution:
+    def median(self, matrix, r, c):
+    	
+    	list = []
+    	
+    	for i in range(r):
+    	    for j in range(c):
+    	        list.append(matrix[i][j])
+    	 
+    	list.sort()
+    	return list[len(list)//2]
+
