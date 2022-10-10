@@ -1,0 +1,46 @@
+TC : O(n2)
+SC : O(n)
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        setNums = set()
+        
+        for i in nums:
+            if i in setNums:
+                return True
+            setNums.add(i)
+            
+        return False
+        
+
+#Using_Dictionary
+
+TC : O(n)
+SC : O(n)
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        
+        dic = dict()
+        
+        for i in nums:
+            if i not in dic.keys():
+                dic[i]=1
+            else:
+                dic[i]+=1
+        
+        for u,v in dic.items():
+            if v>1:
+                return True
+        
+        return False
+        
+#SET
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        
+        if len(set(nums))!=len(nums):
+            return True
+        else:
+            return False
