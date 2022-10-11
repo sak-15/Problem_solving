@@ -1,0 +1,32 @@
+# HashMap
+TC : O(n)
+SC : O(n)
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        dic = dict()
+        
+        for i in nums:
+            if i not in dic.keys():
+                dic[i]=1
+            
+            else:
+                dic[i]+=1
+                
+        for u,v in dic.items():
+            if v==1:
+                return u
+                
+                
+# BitManipulation                
+TC : O(n)
+SC : O(1)
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        xor = 0
+        
+        for i in nums:
+            xor ^= i
+            
+        return xor
