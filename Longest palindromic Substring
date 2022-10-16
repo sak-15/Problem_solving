@@ -1,0 +1,21 @@
+TC : O(n)
+SC : O(1)
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        def longestSubstring(string, left, right):
+            
+            while left>=0 and right<len(string) and string[left]==string[right]:
+                left-=1
+                right+=1
+            return string[left+1:right]
+        
+        output = ""
+        for i in range(len(s)):
+            oddletter=longestSubstring(s,i,i)
+            evenletter = longestSubstring(s,i,i+1)
+            if len(oddletter)>len(output):
+                output = oddletter
+            if len(evenletter)>len(output):
+                output = evenletter
+        return output
